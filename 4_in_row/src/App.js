@@ -20,14 +20,25 @@ class App extends Component{
     }
   }
 
+  setCellValue = (columnIndex, cellIndex, value) => {
+    const newFieldState = [...this.state.field];
+    newFieldState[columnIndex][cellIndex] = value;
+    this.setState({
+      field: newFieldState
+    })
+  }  
+
   render() {
 
     return (
-      <div className="table">
-        {this.state.field.map(el => {
-          return <Column values={el}/>
-        })}
+      <div className="container-app"> 
+        <div className="table"> 
+          {this.state.field.map((el, idx) => {
+            return <Column key={idx} setCellValue={this.setCellValue} columnIndex={idx} values={el}/>
+          })}
+        </div>
       </div>
+      
     );
   }
   
