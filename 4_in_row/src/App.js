@@ -20,11 +20,13 @@ class App extends Component{
     }
   }
 
-  setCellValue = (columnIndex, cellIndex, value) => {
+  setCellValue = (columnIndex, cellIndex) => {
+    const nextPlayer = this.state.currentPlayer === 1 ? 2 : 1;
     const newFieldState = [...this.state.field];
-    newFieldState[columnIndex][cellIndex] = value;
+    newFieldState[columnIndex][cellIndex] = this.state.currentPlayer;
     this.setState({
-      field: newFieldState
+      field: newFieldState,
+      currentPlayer: nextPlayer
     })
   }  
 
