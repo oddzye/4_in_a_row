@@ -4,12 +4,11 @@ import Cell from '../Cell/Cell'
 function Column(props) {
 
     const showCells = (column) => {
-        return column.map((el, cellIndex)  => <Cell
-         onClickCell={props.setCellValue} columnIndex={props.columnIndex} cellIndex={cellIndex} value={el}/>)
+        return column.map((el, idx)  => <Cell key={idx} value={el}/>)
     } 
 
     return (
-        <div>
+        <div onClick={() => props.onClickColumn(props.columnIndex)}>
             {showCells(props.values)}
         </div>
     )

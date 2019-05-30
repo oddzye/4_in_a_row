@@ -8,10 +8,10 @@ class App extends Component{
 
     this.state = {
       field: [
-        [1, 0, 0, 0, 0, 0],
-        [0, 2, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
-        [0, 0, 2, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
@@ -20,10 +20,19 @@ class App extends Component{
     }
   }
 
-  setCellValue = (columnIndex, cellIndex) => {
+  makeTurn = (columnIndex) => {
     const nextPlayer = this.state.currentPlayer === 1 ? 2 : 1;
     const newFieldState = [...this.state.field];
-    newFieldState[columnIndex][cellIndex] = this.state.currentPlayer;
+    const columnLength = newFieldState[columnIndex].length;
+    console.log("lol")
+    for (let i = columnLength - 1; i >= 0; i--) {
+      console.log("wtf")
+      if (newFieldState[columnIndex][i] === 0) {
+        newFieldState[columnIndex][i] = this.state.currentPlayer;
+        break;
+      }
+    }
+    
     this.setState({
       field: newFieldState,
       currentPlayer: nextPlayer
@@ -36,7 +45,7 @@ class App extends Component{
       <div className="container-app"> 
         <div className="table"> 
           {this.state.field.map((el, idx) => {
-            return <Column key={idx} setCellValue={this.setCellValue} columnIndex={idx} values={el}/>
+            return <Column key={idx} onClickColumn={this.makeTurn} columnIndex={idx} values={el}/>
           })}
         </div>
       </div>
