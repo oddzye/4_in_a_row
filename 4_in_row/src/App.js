@@ -47,8 +47,6 @@ class App extends Component{
     const FIELD_WIDTH = this.state.field.length;
     const FIELD_HEIGHT = this.state.field[0].length;
 
-    console.log("field width: ", FIELD_WIDTH, " field height - ", FIELD_HEIGHT);
-
     for (let i = 0; i < FIELD_WIDTH; i += 1) {
       for (let j = 0; j < FIELD_HEIGHT; j += 1) {
         let startCell = this.state.field[i][j];
@@ -64,8 +62,7 @@ class App extends Component{
           if (length === WIN_LENGTH) {
             this.setState({
               winner: startCell
-            })
-            alert ("winner is " + startCell);
+            }, () => alert ("winner is " + this.state.winner))
             return;
           }
         }
@@ -77,12 +74,16 @@ class App extends Component{
 
     return (
       <div className="container-app"> 
-        <div className="table"> 
+        <div className="field"> 
           {this.state.field.map((el, idx) => {
             return <Column key={idx} onClickColumn={this.makeTurn} columnIndex={idx} values={el}/>
           })}
         </div>
+        <div className="status-bar">
+          Current playes is {this.state.currentPlayer}
+        </div>
       </div>
+
       
     );
   }
