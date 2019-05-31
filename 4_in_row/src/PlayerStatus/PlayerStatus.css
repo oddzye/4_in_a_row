@@ -1,0 +1,10 @@
+.player-status__wrap {
+    background: url('../images/bg-field.jpg') center center no-repeat;
+    border-radius: 5px;
+}
+
+
+.player-status__active {
+    border: 3px solid black;
+    background-color: blue;
+}

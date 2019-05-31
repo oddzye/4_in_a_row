@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Column from './Column/Column';
+import PlayerStatus from './PlayerStatus/PlayerStatus';
 
 class App extends Component{
   constructor(props){
@@ -74,6 +75,8 @@ class App extends Component{
 
     return (
       <>
+        <PlayerStatus player={1} currentPlayer={this.state.currentPlayer}/>
+        <PlayerStatus player={2} currentPlayer={this.state.currentPlayer}/>
         <div className="container-app"> 
         <div className="field-wrap">
         <div className="field"> 
