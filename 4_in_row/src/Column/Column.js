@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Cell from '../Cell/Cell'
-import Arrow from '../Arrow/Arrow'
+import './Column.css'
 
 class Column extends Component {
     constructor() {
@@ -14,7 +14,7 @@ class Column extends Component {
     render () {
         return (
             <>
-                <div onClick={() => this.props.onClickColumn(this.props.columnIndex)}>
+                <div className="column" onClick={() => this.props.onClickColumn(this.props.columnIndex)}>
                     {this.showCells(this.props.values)}
                 </div>
             </>
