@@ -1,5 +1,4 @@
 .field {
-  
   display: flex;
   background: url('./images/bg-field.jpg') center center no-repeat;
   background-size: cover;
@@ -14,6 +13,7 @@
 
 .container-app {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
 }

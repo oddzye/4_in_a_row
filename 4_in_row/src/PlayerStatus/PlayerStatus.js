@@ -1,16 +1,26 @@
 import React from 'react';
 import classNames from 'classnames'
-import './PlayerStatus'
+import './PlayerStatus.css'
+import '../Cell/Cell.css'
 
 function PlayerStatus(props) {
-    let playerStatusClasses = classNames({
-         'player-status__active': props.player === props.currentPlayer,
+    const playerStatusClasses = classNames({
+         'player-status__active__blue': props.player === props.currentPlayer && props.player === 1,
+         'player-status__active__red': props.player === props.currentPlayer && props.player === 2,
          'player-status__wrap': true
+    });
+
+    const playerColorClasses = classNames({
+        'cell-value__2player': props.player === 2,
+        'cell-value__1player': props.player === 1,
+        'cell-template': true
+
+
     })
     return (
         <div className={playerStatusClasses}>
-            <img src={require('../images/man-user.svg')} alt="user"/>
-            {props.player === 1 ? <div>blue</div> : <div>red</div>}
+            <img className="player-status__img" src={require('../images/man-user.svg')} alt="user"/>
+                <div className={playerColorClasses} />
         </div>
     )
 }

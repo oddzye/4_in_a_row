@@ -75,16 +75,18 @@ class App extends Component{
 
     return (
       <>
-        <PlayerStatus player={1} currentPlayer={this.state.currentPlayer}/>
-        <PlayerStatus player={2} currentPlayer={this.state.currentPlayer}/>
+        
+        
         <div className="container-app"> 
+        <PlayerStatus player={1} currentPlayer={this.state.currentPlayer}/>
         <div className="field-wrap">
-        <div className="field"> 
+          <div className="field"> 
             {this.state.field.map((el, idx) => {
               return <Column key={idx} onClickColumn={this.makeTurn} columnIndex={idx} values={el}/>
             })}
           </div>
         </div>
+        <PlayerStatus player={2} currentPlayer={this.state.currentPlayer}/>
         </div>
         <div className="status-bar">
             Current playes is {this.state.currentPlayer}
