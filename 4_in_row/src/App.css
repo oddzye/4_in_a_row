@@ -1,5 +1,13 @@
 .field {
   display: flex;
+  background: url('./images/bg-field.jpg') center center no-repeat;
+  background-size: cover;
+}
+
+.field-wrap {
+  padding: 7px;
+  border: 5px solid #3EAA5E;
+  border-radius: 7px;
 }
 
 .container-app {

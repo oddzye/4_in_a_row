@@ -73,16 +73,20 @@ class App extends Component{
   render() {
 
     return (
-      <div className="container-app"> 
+      <>
+        <div className="container-app"> 
+        <div className="field-wrap">
         <div className="field"> 
-          {this.state.field.map((el, idx) => {
-            return <Column key={idx} onClickColumn={this.makeTurn} columnIndex={idx} values={el}/>
-          })}
+            {this.state.field.map((el, idx) => {
+              return <Column key={idx} onClickColumn={this.makeTurn} columnIndex={idx} values={el}/>
+            })}
+          </div>
+        </div>
         </div>
         <div className="status-bar">
-          Current playes is {this.state.currentPlayer}
+            Current playes is {this.state.currentPlayer}
         </div>
-      </div>
+      </>
 
       
     );
