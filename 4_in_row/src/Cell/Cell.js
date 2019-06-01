@@ -10,7 +10,6 @@ function Cell(props) {
     })
     return <div className="cell">
                 <div className={cellValueClasses}>
-                    {props.value}
                 </div> 
             </div>
 }
