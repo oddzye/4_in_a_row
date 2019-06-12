@@ -11,32 +11,39 @@ class StartPage extends Component {
         }
     }
 
-    onChangeNamePlayer = (e, name) => {
-        switch (name) {
-            case 'firstPlayerName':
-                this.setState({
-                    firstPlayerName: e.target.value
-                });
-                console.log("first player", this.state.firstPlayerName)
-            case 'secondPlayerName':
-            this.setState({
-                secondPlayerName: e.target.value
-            });
-            console.log("second player", this.state.secondPlayerName)
-        }
-        
+    onChangeNameFirstPlayer = (e) => {
+        this.setState({
+            firstPlayerName: e.target.value
+        });
+    }
+
+    onChangeNameSecondPlayer = (e) => {
+        this.setState({
+            secondPlayerName: e.target.value
+        });
     }
 
     render() {
-        const firstPlayerName = 'firstPlayerName';
-        const secondPlayerName = 'secondPlayerName';
         return (
-            <>
-            <div>Введите имена игроков</div>
-            <input onChange={(e, firstPlayerName) => this.onChangeNamePlayer}/>
-            <input onChange={(e, secondPlayerName) => this.onChangeNamePlayer}/>
-                <Link to='/game'>Start game!</Link>
-            </>
+            <div className="start-page__container">
+                <h3 className="start-page__title">Введите имена игроков</h3>
+                <div className="player-name__input__wrap">
+                    <label className="player-name__input" htmlFor="first-player__name">Имя первого игрока:</label>
+                    <input id="first-player__name" onChange={this.onChangeNameFirstPlayer}/>
+                </div>
+                <div className="player-name__input__wrap">
+                    <label className="player-name__input" htmlFor="second-player__name">Имя второго игрока:</label>
+                    <input id="second-player__name" onChange={this.onChangeNameSecondPlayer}/>
+                </div>
+                
+                <Link className="link" 
+                    to={{pathname: '/game', state: {
+                        firstPlayerName: this.state.firstPlayerName,
+                        secondPlayerName: this.state.secondPlayerName
+                        }}}>
+                    Начать игру!
+                </Link>
+            </div>
         )
     }
 }

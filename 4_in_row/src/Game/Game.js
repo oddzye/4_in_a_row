@@ -79,7 +79,6 @@ class Game extends Component{
   isGameOver = () => {
     const FIELD_WIDTH = this.state.field.length;
     const FIELD_HEIGHT = this.state.field[0].length;
-    let fieldHaveEmptyCellsCount = true;
     if (this.state.winner) {
       this.setState({
         isGameOver: true
@@ -104,12 +103,14 @@ class Game extends Component{
   }
 
   render() {
+    const firstPlayerName = this.props.location.state ? this.props.location.state.firstPlayerName : 'Первый игрок';
+    const secondPlayerName = this.props.location.state ? this.props.location.state.secondPlayerName : 'Второй игрок';
     return (
       <>
         <button onClick={() => this.setState({isGameOver: true})}>Завершить игру</button>
         {this.state.isGameOver && <Redirect to="/gameOver"/>}
         <div className="container-app"> 
-        <PlayerStatus player={1} currentPlayer={this.state.currentPlayer}/>
+        <PlayerStatus playerName={firstPlayerName} player={1} currentPlayer={this.state.currentPlayer}/>
         <div className="field-wrap">
           <div className="field"> 
             {this.state.field.map((el, idx) => {
@@ -117,7 +118,7 @@ class Game extends Component{
             })}
           </div>
         </div>
-        <PlayerStatus player={2} currentPlayer={this.state.currentPlayer}/>
+        <PlayerStatus player={2} playerName={secondPlayerName} currentPlayer={this.state.currentPlayer}/>
         </div>
       </>
     );

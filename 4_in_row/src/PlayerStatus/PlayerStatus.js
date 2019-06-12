@@ -17,10 +17,13 @@ function PlayerStatus(props) {
 
 
     })
+
+    const { playerName } = props;
     return (
         <div className={playerStatusClasses}>
             <img className="player-status__img" src={require('../images/man-user.svg')} alt="user"/>
-                <div className={playerColorClasses} />
+            <div className={playerColorClasses} />
+            <p>{playerName}</p>
         </div>
     )
 }
