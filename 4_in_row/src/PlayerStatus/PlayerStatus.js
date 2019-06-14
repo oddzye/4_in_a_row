@@ -17,7 +17,7 @@ function PlayerStatus(props) {
 
 
     })
-
+    
     const { playerName } = props;
     return (
         <div className={playerStatusClasses}>
