@@ -12,7 +12,7 @@ db.on('open', () => console.log('Connected to Database'));
 
 app.use(express.json());
 
-const subscribersRouter = require('./routes/subscribers');
-app.use('/subscribers', subscribersRouter)
+const gamesRouter = require('./routes/games');
+app.use('/games', gamesRouter)
 
 app.listen(3002, () => console.log("Server started"));
