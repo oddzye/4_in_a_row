@@ -12,6 +12,7 @@ function App () {
         <HashRouter>
           <Route path='/' exact component={StartPage}></Route>
           <Route path='/game' component={Game}></Route>
+          <Route path='/games' component={Main}></Route>
           <Route path="/gameOver" component={GameOverPopup}></Route>
         </HashRouter>
       </>

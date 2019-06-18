@@ -56,8 +56,8 @@ class StartPage extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    setPlayerName: (name, number) => dispatch(setPlayerName(name, number))
-})
+// const mapDispatchToProps = dispatch => ({
+//     setPlayerName: (name, number) => dispatch(setPlayerName(name, number))
+// })
 
-export default connect(null, mapDispatchToProps)(StartPage);
+export default connect(null, {setPlayerName})(StartPage);
