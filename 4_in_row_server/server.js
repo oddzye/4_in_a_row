@@ -13,6 +13,6 @@ db.on('open', () => console.log('Connected to Database'));
 app.use(express.json());
 
 const gamesRouter = require('./routes/games');
-app.use('/games', gamesRouter)
+app.use('/games', gamesRouter);
 
 app.listen(3002, () => console.log("Server started"));
