@@ -104,7 +104,7 @@ class Game extends Component{
   }
 
   render() {
-    console.log(this.props.firstPlayerName)
+    console.log("props`ы", this.props);
     const { firstPlayerName, secondPlayerName } = this.props;
     
     return (
@@ -128,9 +128,12 @@ class Game extends Component{
   
 }
 
-const mapStateToProps = state => ({
-  firstPlayerName: state.firstPlayerName,
-  secondPlayerName: state.secondPlayerName
-})
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    firstPlayerName: state.players.firstPlayerName,
+    secondPlayerName: state.players.secondPlayerName
+  }
+}
 
 export default connect(mapStateToProps)(Game);

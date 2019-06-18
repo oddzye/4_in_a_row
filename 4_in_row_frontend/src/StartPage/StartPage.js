@@ -13,9 +13,9 @@ class StartPage extends Component {
     }
 
     onChangeNameFirstPlayer = (e) => {
-        const { setPlayerName } = this.props;
-
-        setPlayerName(e.target.value , 1);
+        this.setState({
+            firstPlayerName: e.target.value
+        });
         
     }
 
@@ -23,6 +23,12 @@ class StartPage extends Component {
         this.setState({
             secondPlayerName: e.target.value
         });
+    }
+
+    setPlayerNames = () => {
+        const { setPlayerName } = this.props;
+        setPlayerName(this.state.firstPlayerName , 1);
+        setPlayerName(this.state.secondPlayerName , 2);
     }
 
     render() {
@@ -38,7 +44,9 @@ class StartPage extends Component {
                     <input id="second-player__name" onChange={this.onChangeNameSecondPlayer}/>
                 </div>
                 
-                <Link className="link" 
+                <Link 
+                    onClick={this.setPlayerNames}
+                    className="link" 
                     to={{pathname: '/game'}}>
                     Начать игру!
                 </Link>
