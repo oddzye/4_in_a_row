@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { setPlayerName } from '../actions/actionCreators'
 import '../StartPage/StartPage.css';
 
 class StartPage extends Component {
@@ -56,7 +57,7 @@ class StartPage extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    setPlayerName: (name, number) => dispatch({type: 'SET_PLAYER_NAME', name: name, number: number})
+    setPlayerName: (name, number) => dispatch(setPlayerName(name, number))
 })
 
 export default connect(null, mapDispatchToProps)(StartPage);
