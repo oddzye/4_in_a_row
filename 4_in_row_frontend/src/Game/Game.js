@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './Game.css';
 import Column from '../Column/Column';
+import { connect } from 'react-redux';
 import PlayerStatus from '../PlayerStatus/PlayerStatus';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 class Game extends Component{
   constructor(props){
@@ -103,8 +104,9 @@ class Game extends Component{
   }
 
   render() {
-    const firstPlayerName = this.props.location.state ? this.props.location.state.firstPlayerName : 'Первый игрок';
-    const secondPlayerName = this.props.location.state ? this.props.location.state.secondPlayerName : 'Второй игрок';
+    console.log(this.props.firstPlayerName)
+    const { firstPlayerName, secondPlayerName } = this.props;
+    
     return (
       <>
         <button onClick={() => this.setState({isGameOver: true})}>Завершить игру</button>
@@ -126,4 +128,9 @@ class Game extends Component{
   
 }
 
-export default Game;
+const mapStateToProps = state => ({
+  firstPlayerName: state.firstPlayerName,
+  secondPlayerName: state.secondPlayerName
+})
+
+export default connect(mapStateToProps)(Game);

@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
-import { Link } from 'react-router-dom'
-import '../StartPage/StartPage.css'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import '../StartPage/StartPage.css';
 
 class StartPage extends Component {
     constructor() {
@@ -12,9 +13,10 @@ class StartPage extends Component {
     }
 
     onChangeNameFirstPlayer = (e) => {
-        this.setState({
-            firstPlayerName: e.target.value
-        });
+        const { setPlayerName } = this.props;
+
+        setPlayerName(e.target.value , 1);
+        
     }
 
     onChangeNameSecondPlayer = (e) => {
@@ -37,10 +39,7 @@ class StartPage extends Component {
                 </div>
                 
                 <Link className="link" 
-                    to={{pathname: '/game', state: {
-                        firstPlayerName: this.state.firstPlayerName,
-                        secondPlayerName: this.state.secondPlayerName
-                        }}}>
+                    to={{pathname: '/game'}}>
                     Начать игру!
                 </Link>
             </div>
@@ -48,5 +47,8 @@ class StartPage extends Component {
     }
 }
 
+const mapDispatchToProps = dispatch => ({
+    setPlayerName: (name, number) => dispatch({type: 'SET_PLAYER_NAME', name: name, number: number})
+})
 
-export default StartPage;
+export default connect(null, mapDispatchToProps)(StartPage);
