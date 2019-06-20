@@ -4,6 +4,7 @@ import './App.css';
 import Game from './Game/Game';
 import StartPage from './StartPage/StartPage' 
 import GameOverPopup from './GameOverPopup.js/GameOverPopup';
+import Main from './Main/Main'
 
 function App () {
  

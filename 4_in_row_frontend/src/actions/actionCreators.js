@@ -3,3 +3,8 @@ export const setPlayerName = (name, number) => ({
     name,
     number
 })
+
+export const setGames = (gamesArr) => ({
+    type: 'SET_GAMES',
+    gamesArr
+})
