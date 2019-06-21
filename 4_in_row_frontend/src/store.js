@@ -20,4 +20,6 @@ const configureStore = preloadedState => (
 
 const store = configureStore({});
 
+store.subscribe(() => console.log('Store new state', store.getState()))
+
 export default store;
