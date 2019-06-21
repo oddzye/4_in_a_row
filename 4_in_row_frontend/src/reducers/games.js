@@ -6,8 +6,8 @@ export const games = (state = initialState, action) => {
     const copyState = {...state};
     switch (action.type) {
         case 'SET_GAMES':
-            const { games } = action;
-            copyState.games = games;
+            const { gamesArr } = action;
+            copyState.games = gamesArr;
             return copyState;
         default:
             return copyState;
