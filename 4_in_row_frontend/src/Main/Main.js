@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import axios from 'axios';
-import { setGames } from '../actions/actionCreators';
+// import { setGames } from '../actions/actionCreators';
+import { setGamesThunkCreator } from '../reducers/games' 
 import { connect } from 'react-redux';
 
 class Main extends Component {
@@ -11,12 +11,7 @@ class Main extends Component {
 
     componentDidMount = () => {
         const { setGames } = this.props;
-        axios.get('http://localhost:3002/games/')
-            .then(res => {
-                console.log("fetch ", res.data);
-                setGames(res.data)
-            } )
-            .catch(err => console.log(err)); 
+        setGames()
     }
 
     render() {
@@ -34,9 +29,4 @@ const mapStateToProps = (state) => ({
 })
     
 
-
-const mapDispatchToProps = (dispatch) => ({
-    setGames: (games) => dispatch(setGames(games))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, {setGames: setGamesThunkCreator})(Main);

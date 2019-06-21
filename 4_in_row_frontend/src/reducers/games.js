@@ -1,3 +1,6 @@
+import { setGames } from '../actions/actionCreators'
+import axios from 'axios';
+
 const initialState = {
     games: []
 }
@@ -15,3 +18,11 @@ export const games = (state = initialState, action) => {
 }
 
 
+export const setGamesThunkCreator = () => dispatch => {
+    axios.get('http://localhost:3002/games/')
+        .then(res => {
+            console.log("fetching in thunk ", res.data);
+            dispatch(setGames(res.data))
+        } )
+        .catch(err => console.log(err)); 
+}
